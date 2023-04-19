@@ -1,4 +1,7 @@
-function GetAllBooks() {
+import { Category } from "./enums";
+import { Book, DamageLogger, Author, Librarian } from "./interfaces";
+
+function GetAllBooks(): Book[] {
     let books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
         { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
@@ -24,7 +27,7 @@ function LogFirstAvailable(books = GetAllBooks()): void {
     console.log('First Available: ' + firstAvailable);
 }
 
-enum Category { Biography, Poetry, Fiction, History, Children }
+//enum Category { Biography, Poetry, Fiction, History, Children }
 
 function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string> {
 
@@ -48,7 +51,7 @@ function LogBookTitles(titles: string[]): void {
     }
 }
 
-function GetBookByID(id: number) {
+function GetBookByID(id: number): Book {
     const allBooks = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
@@ -109,10 +112,28 @@ function GetTitles(bookProperty: any): string[] {
     return foundTitles;
 }
 
+function PrintBook(book: Book): void {
+    console.log(book.title + ' by ' + book.author);
+}
+
 //************************************************************************
 
-let checkedOutBooks = GetTitles(false);
-checkedOutBooks.forEach(title => console.log(title));
+// let myBook: Book = {
+//     id: 5,
+//     title: 'Pride and Prejudice',
+//     author: 'Jane Austin',
+//     available: true,
+//     category: Category.Fiction,
+//     pages: 250,
+//     markDamaged: (reason: string) => console.log('Damaged: ' + reason)
+// };
+
+// PrintBook(myBook);
+// myBook.markDamaged('torn pages');
+
+// let logDamage: DamageLogger;
+// logDamage = (damage: string) => console.log('Damage reported: ' + damage);
+// logDamage('coffee stains');
 
 
 // let myBooks: string[] = CheckoutBooks('Thorne', 1, 3, 4);
