@@ -1,5 +1,6 @@
 import { Category } from "./enums";
 import { Book, DamageLogger, Author, Librarian } from "./interfaces";
+import { UniversityLibrarian, ReferenceItem } from "./classes";
 
 function GetAllBooks(): Book[] {
     let books = [
@@ -117,6 +118,16 @@ function PrintBook(book: Book): void {
 }
 
 //************************************************************************
+
+let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures', 2012);
+ref.printItem();
+ref.publisher = 'Random Data Publishing';
+console.log(ref.publisher);
+
+
+// let favoriteLibrarian: Librarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'Sharon';
+// favoriteLibrarian.assistCustomer('Lynda');
 
 // let myBook: Book = {
 //     id: 5,
