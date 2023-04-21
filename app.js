@@ -92,10 +92,19 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 //************************************************************************
-let ref = new classes_1.ReferenceItem('Updated Facts and Figures', 2012);
-ref.printItem();
-ref.publisher = 'Random Data Publishing';
-console.log(ref.publisher);
+let Newspaper = class extends classes_1.ReferenceItem {
+    printCitation() {
+        console.log(`Newspaper: ${this.title}`);
+    }
+};
+let myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
+// let refBook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
+// refBook.printCitation();
+//let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures', 2012);
+// ref.printItem();
+// ref.publisher = 'Random Data Publishing';
+// console.log(ref.publisher);
 // let favoriteLibrarian: Librarian = new UniversityLibrarian();
 // favoriteLibrarian.name = 'Sharon';
 // favoriteLibrarian.assistCustomer('Lynda');
