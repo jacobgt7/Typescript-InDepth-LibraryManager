@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const enums_1 = require("./enums");
-const classes_1 = require("./classes");
+const utilityFunctions_1 = require("./lib/utilityFunctions");
 function GetAllBooks() {
     let books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -92,48 +92,13 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 //************************************************************************
-let Newspaper = class extends classes_1.ReferenceItem {
-    printCitation() {
-        console.log(`Newspaper: ${this.title}`);
-    }
-};
-let myPaper = new Newspaper('The Gazette', 2016);
-myPaper.printCitation();
-// let refBook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
-// refBook.printCitation();
-//let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures', 2012);
-// ref.printItem();
-// ref.publisher = 'Random Data Publishing';
-// console.log(ref.publisher);
-// let favoriteLibrarian: Librarian = new UniversityLibrarian();
-// favoriteLibrarian.name = 'Sharon';
-// favoriteLibrarian.assistCustomer('Lynda');
-// let myBook: Book = {
-//     id: 5,
-//     title: 'Pride and Prejudice',
-//     author: 'Jane Austin',
-//     available: true,
-//     category: Category.Fiction,
-//     pages: 250,
-//     markDamaged: (reason: string) => console.log('Damaged: ' + reason)
-// };
-// PrintBook(myBook);
-// myBook.markDamaged('torn pages');
-// let logDamage: DamageLogger;
-// logDamage = (damage: string) => console.log('Damage reported: ' + damage);
-// logDamage('coffee stains');
-// let myBooks: string[] = CheckoutBooks('Thorne', 1, 3, 4);
-// myBooks.forEach(title => console.log(title));
-//LogFirstAvailable();
-// let fictionBooks = GetBookTitlesByCategory();
-// fictionBooks.forEach(title => console.log(title));
-// CreateCustomer('Michelle');
-// CreateCustomer('Leigh', 6, 'Atlanta');
-// let x: number;
-// x = 5;
-// let IdGenerator: (chars: string, nums: number) => string;
-// IdGenerator = (name: string, id: number) => { return id + name; };
-// let myID: string = IdGenerator('daniel', 20);
-// console.log(myID);
-// const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
-// fictionBooks.forEach((val, idx, arr) => console.log(++idx + ' - ' + val));
+let inventory = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: enums_1.Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: enums_1.Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts', author: 'C. D.', available: true, category: enums_1.Category.Software }
+];
+let purgedBooks = (0, utilityFunctions_1.Purge)(inventory);
+purgedBooks.forEach(book => console.log(book.title));
+let purgedNums = (0, utilityFunctions_1.Purge)([1, 2, 3, 4]);
+console.log(purgedNums);
